@@ -262,7 +262,9 @@ def delete_button(window: MainWindow):
 @send_args_inside_func
 def add_button(add_window, main_window):
     """Кнопка добавления строки."""
-    print(type(main_window.form.NirViewWidget))
+
+    add_window.window.show()
+
     cod_vuz = add_window.form.cod_vuz
     reg_number_nir = add_window.form.reg_number_nir
     character_nir = add_window.form.character_nir
@@ -273,21 +275,6 @@ def add_button(add_window, main_window):
     financial = add_window.form.financial
     naming_nir = add_window.form.naming_nir
 
-    # f_code = add_ui.comboBox.currentText()
-    # exec_date = cod_with_date_and_stat[f_code][1]
-    # serial_number = cod_with_date_and_stat[f_code][0]
-    # torg_date = add_ui.lineEdit_2.text()
-    # torg_date = "-".join(torg_date.split('-'))
-    # if torg_date >= exec_date:
-    #     message_text = f'"Дата торгов"\nВведите дату меньшую даты погашения: {".".join(exec_date.split("-"))}'
-    #     add_ui.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
-    #     add_ui.message.show()
-    #     return
-    # if len(torg_date) != 10:
-    #     message_text = f'"Дата торгов"\nЗаполните поле корректно'
-    #     add_ui.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
-    #     add_ui.message.show()
-    #     return
     stack_naming = [
         cod_vuz,
         reg_number_nir,
@@ -299,45 +286,48 @@ def add_button(add_window, main_window):
         financial,
         naming_nir
         ]
-    for i in stack_naming:
-        if not i:
-            message_text = 'Все поля должны быть заполненными!'
-            add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
-            add_window.message.show()
+    # if add_window.form.agreeButton.clicked():
+    
+    #     for i in stack_naming:
+    #         if not i:
+    #             message_text = 'Все поля должны быть заполненными!'
+    #             add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
+    #             add_window.message.show()
 
 
-    if cod_vuz and reg_number_nir:
-        data = get_data(db_name,
-                        query=f"""SELECT codvuz, rnw FROM Tp_nir""") 
-        set_cod_vuz_reg_number_nir = (cod_vuz, reg_number_nir)
-        if set_cod_vuz_reg_number_nir in data:
-            message_text = 'Связь код ВУЗа и рег.номера НИР не уникальна!'
-            add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
-            add_window.message.show()
+    #     if cod_vuz and reg_number_nir:
+    #         data = get_data(db_name,
+    #                         query=f"""SELECT codvuz, rnw FROM Tp_nir""") 
+    #         set_cod_vuz_reg_number_nir = (cod_vuz, reg_number_nir)
+    #         if set_cod_vuz_reg_number_nir in data:
+    #             message_text = 'Связь код ВУЗа и рег.номера НИР не уникальна!'
+    #             add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
+    #             add_window.message.show()
 
-    if int(financial) <= 0:
-        message_text = 'Значение планового финиансирования не может быть меньше или равно нулю!'
-        add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
-        add_window.message.show()
+    #     if int(financial) <= 0:
+    #         message_text = 'Значение планового финиансирования не может быть меньше или равно нулю!'
+    #         add_window.message = QMessageBox(QMessageBox.Icon.Critical, 'Ошибка', message_text)
+    #         add_window.message.show()
+    
 
+    #     model = main_window.form.NirViewWidget
+    #     record = model.record()
 
-    model = main_window.form.NirViewWidget
-    record = model.record()
+    #     record.setValue("Код ВУЗа", cod_vuz)
+    #     record.setValue("Рег. номер НИР", reg_number_nir)
+    #     record.setValue("Характер НИР", character_nir)
+    #     record.setValue("Сокр. назв. ВУЗа", socr_name_vuz)
+    #     record.setValue("Код ГРНТИ", cod_grnti)
+    #     record.setValue("Руководитель НИР", ruk_nir)
+    #     record.setValue("Должность руководителя", post)
+    #     record.setValue("Плановое финанс.", financial)
+    #     record.setValue("Наименование НИР", naming_nir)
 
-    record.setValue("Код ВУЗа", cod_vuz)
-    record.setValue("Рег. номер НИР", reg_number_nir)
-    record.setValue("Характер НИР", character_nir)
-    record.setValue("Сокр. назв. ВУЗа", socr_name_vuz)
-    record.setValue("Код ГРНТИ", cod_grnti)
-    record.setValue("Руководитель НИР", ruk_nir)
-    record.setValue("Должность руководителя", post)
-    record.setValue("Плановое финанс.", financial)
-    record.setValue("Наименование НИР", naming_nir)
-
-    model.insertRecord(0, record)
-    model.submitAll()
-    model.select()
-
+    #     model.insertRecord(0, record)
+    #     model.submitAll()
+    #     model.select()
+    # else:
+    #     add_window.window.close()
 
     # if is_row_edit:
     #     model.setRecord(row_to_edit, record)

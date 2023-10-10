@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <widget class="QPushButton" name="agreeButton">
    <property name="geometry">
     <rect>
@@ -36,17 +39,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="cod_vuz">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>50</y>
-     <width>241</width>
-     <height>21</height>
-    </rect>
+    <string>Отмена</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="reg_number_nir">
@@ -70,6 +63,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="cod_grnti">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -78,11 +74,26 @@
      <height>21</height>
     </rect>
    </property>
-   <property name="inputMask">
-    <string>__.__.__, __.__.__</string>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
-   <property name="text">
-    <string>__.__.__, __.__.__</string>
+   <property name="inputMethodHints">
+    <set>Qt::ImhDigitsOnly</set>
+   </property>
+   <property name="inputMask">
+    <string>00.00.00,00.00.00</string>
+   </property>
+   <property name="maxLength">
+    <number>17</number>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
+   <property name="dragEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="ruk_nir">
@@ -95,7 +106,7 @@
     </rect>
    </property>
    <property name="inputMask">
-    <string>_____________________________ _. _.</string>
+    <string>AAAAAAAAAAAAAAAA A.A.</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="post">
@@ -289,15 +300,48 @@
      <height>22</height>
     </rect>
    </property>
-   <property name="currentText">
-    <string/>
+   <property name="editable">
+    <bool>true</bool>
    </property>
+   <property name="currentText">
+    <string>Выбрать</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Выбрать</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>П</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Ф</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Р</string>
+    </property>
+   </item>
   </widget>
   <widget class="QSpinBox" name="financial">
    <property name="geometry">
     <rect>
      <x>170</x>
      <y>330</y>
+     <width>241</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="cod_vuz">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>50</y>
      <width>241</width>
      <height>22</height>
     </rect>
